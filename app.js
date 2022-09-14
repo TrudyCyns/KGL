@@ -1,11 +1,10 @@
-const express = require('express'),
-  path = require('path'),
-  mongoose = require('mongoose'),
-  passport = require('passport'),
-  flash = require('connect-flash');
+/* eslint-disable import/order */
+const express = require('express');
+const path = require('path');
+const mongoose = require('mongoose');
+const passport = require('passport');
+const flash = require('connect-flash');
 require('dotenv').config();
-
-const { ensureAuthenticated } = require('./config/auth');
 
 // Express Session
 const expressSession = require('express-session')({
@@ -14,17 +13,19 @@ const expressSession = require('express-session')({
   saveUninitialized: false,
 });
 
+const { ensureAuthenticated } = require('./config/auth');
+
 // Database
 const config = require('./config/database');
 
 // Models
-const User = require('./models/User');
+// const User = require('./models/User');
 
 // Routes
-const homeRoutes = require('./routes/homeroutes'),
-  managerRoutes = require('./routes/managerroutes'),
-  directorRoutes = require('./routes/directorroutes'),
-  agentRoutes = require('./routes/agentroutes');
+const homeRoutes = require('./routes/homeroutes');
+const managerRoutes = require('./routes/managerroutes');
+const directorRoutes = require('./routes/directorroutes');
+const agentRoutes = require('./routes/agentroutes');
 
 const app = express();
 
@@ -35,11 +36,11 @@ require('./config/passport')(passport);
 mongoose.connect(config.database, { useNewUrlParser: true });
 const db = mongoose.connection;
 // Check connection
-db.once('open', function () {
+db.once('open', () => {
   console.log('Connected to MongoDB');
 });
 // Check for db errors
-db.on('error', function (err) {
+db.on('error', (err) => {
   console.error(err);
 });
 

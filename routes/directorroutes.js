@@ -1,17 +1,17 @@
-const express = require('express');
+const express = require("express");
 
-const produceController = require('../controllers/produceController');
-const credsalesController = require('../controllers/credsalesController');
-const salesController = require('../controllers/salesController');
-const userController = require('../controllers/userController');
+const produceController = require("../controllers/produceController");
+const credsalesController = require("../controllers/credsalesController");
+const salesController = require("../controllers/salesController");
+const userController = require("../controllers/userController");
 
-const Produce = require('../models/Produce');
-const Sale = require('../models/Sale');
-const CreditSale = require('../models/CreditSale');
+const Produce = require("../models/Produce");
+const Sale = require("../models/Sale");
+const CreditSale = require("../models/CreditSale");
 
 const router = express.Router();
 
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   const produce = await Produce.find();
   const sales = await Sale.find();
   const creds = await CreditSale.find();
@@ -19,10 +19,10 @@ router.get('/', async (req, res) => {
   const totalProduce = await Produce.aggregate([
     {
       $group: {
-        _id: '$all',
-        totalTonnage: { $sum: '$tonnage' },
-        totalPrice: { $sum: '$price' },
-        totalBuy: { $sum: '$buyprice' },
+        _id: "$all",
+        totalTonnage: { $sum: "$tonnage" },
+        totalPrice: { $sum: "$price" },
+        totalBuy: { $sum: "$buyprice" },
       },
     },
   ]);
@@ -30,9 +30,9 @@ router.get('/', async (req, res) => {
   const totalSales = await Sale.aggregate([
     {
       $group: {
-        _id: '$all',
-        totalTonnage: { $sum: '$tonnage' },
-        totalAmount: { $sum: '$amtpaid' },
+        _id: "$all",
+        totalTonnage: { $sum: "$tonnage" },
+        totalAmount: { $sum: "$amtpaid" },
       },
     },
   ]);
@@ -40,14 +40,14 @@ router.get('/', async (req, res) => {
   const totalCredit = await CreditSale.aggregate([
     {
       $group: {
-        _id: '$all',
-        totalAmount: { $sum: '$amtdue' },
+        _id: "$all",
+        totalAmount: { $sum: "$amtdue" },
       },
     },
   ]);
 
-  res.render('dir', {
-    title: 'Director',
+  res.render("dir", {
+    title: "Director",
     user: req.session.user,
     totalProd: totalProduce[0],
     totalSales: totalSales[0],
@@ -58,27 +58,27 @@ router.get('/', async (req, res) => {
   });
 });
 
-router.get('/users/new', async (req, res) => {
-  res.render('dcreateuser', { title: 'Create User', user: req.session.user });
+router.get("/users/new", async (req, res) => {
+  res.render("dcreateuser", { title: "Create User", user: req.session.user });
 });
 
 // ROUTES
 // Produce Routes
-router.route('/produce').get(produceController.getAllProduce);
-router.route('/produce/:id').get(produceController.getProduce);
+router.route("/produce").get(produceController.getAllProduce);
+router.route("/produce/:id").get(produceController.getProduce);
 // Sales Routes
-router.route('/sales').get(salesController.getAllSales);
-router.route('/sales/:id').get(salesController.getSale);
+router.route("/sales").get(salesController.getAllSales);
+router.route("/sales/:id").get(salesController.getSale);
 // Credit Sales Routes
-router.route('/creditsales').get(credsalesController.getAllCreditSale);
-router.route('/creditsales/:id').get(credsalesController.getCreditSale);
+router.route("/creditsales").get(credsalesController.getAllCreditSale);
+router.route("/creditsales/:id").get(credsalesController.getCreditSale);
 // User Routes
-router.route('/users').get(userController.getAllUsers);
-router.route('/users/new').post(userController.createUser);
+router.route("/users").get(userController.getAllUsers);
+router.route("/users/new").post(userController.createUser);
 router
-  .route('/users/:id')
+  .route("/users/:id")
   .get(userController.getUser)
   .post(userController.updateUser);
-router.route('/users/delete/:id').post(userController.deleteUser);
+router.route("/users/delete/:id").post(userController.deleteUser);
 
 module.exports = router;

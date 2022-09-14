@@ -1,19 +1,18 @@
-const User = require('./../models/User'),
-  jwt = require('jsonwebtoken'),
-  { promisify } = require('util');
+const jwt = require("jsonwebtoken");
+const { promisify } = require("util");
+const User = require("../models/User");
 
-  // Make JWT
-const signToken = (id) => {
-  return jwt.sign({ id }, 'secret', {
-    expiresIn: '90d',
+// Make JWT
+const signToken = (id) =>
+  jwt.sign({ id }, "secret", {
+    expiresIn: "90d",
   });
-};
 
 // CReate and Send TOken to user on login and signup
 const createSendToken = (user, statusCode, res) => {
   const token = signToken(user._id);
   res.status(statusCode).json({
-    status: 'success',
+    status: "success",
     token,
     data: {
       user,
@@ -41,7 +40,7 @@ exports.signUp = async (req, res, next) => {
     createSendToken(newUser, 201, res);
   } catch (err) {
     res.status(400).json({
-      status: 'fail',
+      status: "fail",
       message: err,
     });
   }
@@ -55,18 +54,18 @@ exports.login = async (req, res, next) => {
     // Check if email and pwd have been given.
     if (!email || !password) {
       return res.status(400).json({
-        status: 'fail',
-        message: 'Please provide email and password.',
+        status: "fail",
+        message: "Please provide email and password.",
       });
     }
 
     // Check if user exists && pwd is correct
-    const user = await User.findOne({ email }).select('+password');
+    const user = await User.findOne({ email }).select("+password");
 
     if (!user || !(await user.correctPassword(password, user.password))) {
       return res.status(401).json({
-        status: 'fail',
-        message: 'Incorrect email or password.',
+        status: "fail",
+        message: "Incorrect email or password.",
       });
     }
 
@@ -74,7 +73,7 @@ exports.login = async (req, res, next) => {
     createSendToken(newUser, 200, res);
   } catch (error) {
     return res.status(500).json({
-      status: 'fail',
+      status: "fail",
       message: error,
     });
   }
@@ -86,24 +85,24 @@ exports.protect = async (req, res, next) => {
   let token;
   if (
     req.headers.authorization &&
-    req.headers.authorization.startsWith('Bearer')
+    req.headers.authorization.startsWith("Bearer")
   ) {
-    token = req.headers.authorization.split(' ')[1];
+    token = req.headers.authorization.split(" ")[1];
   }
 
   if (!token) {
     return res.status(401).json({
-      status: 'fail',
-      message: 'You are not logged in. Please Login to access.',
+      status: "fail",
+      message: "You are not logged in. Please Login to access.",
     });
   }
 
   // Verify token
-  const decoded = await promisify(jwt.verify)(token, 'secret');
+  const decoded = await promisify(jwt.verify)(token, "secret");
   if (!decoded) {
     return res.status(401).json({
-      status: 'fail',
-      message: 'Invalid token. Please login again.',
+      status: "fail",
+      message: "Invalid token. Please login again.",
     });
   }
 
@@ -111,8 +110,8 @@ exports.protect = async (req, res, next) => {
   const currentUser = await User.findById(decoded.id);
   if (!currentUser) {
     return res.status(401).json({
-      status: 'fail',
-      message: 'The user no longer exists.',
+      status: "fail",
+      message: "The user no longer exists.",
     });
   }
 

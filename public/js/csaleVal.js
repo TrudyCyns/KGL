@@ -1,29 +1,29 @@
-let credVal = () => {
+const credVal = () => {
   // Input Fields
-  let byrName = document.csales.byrname;
-  let nin = document.csales.nin;
-  let location = document.csales.location;
-  let tel = document.csales.telno;
-  let type = document.csales.pdtype;
-  let pdtName = document.csales.prodname;
-  let agtName = document.csales.agtname;
+  const byrName = document.csales.byrname;
+  const nin = document.csales.nin;
+  const location = document.csales.location;
+  const tel = document.csales.telno;
+  const type = document.csales.pdtype;
+  const pdtName = document.csales.prodname;
+  const agtName = document.csales.agtname;
 
   // Error Fields
-  let errByrName = document.querySelector('#errByrName');
-  let errNin = document.querySelector('#errNin');
-  let errLocation = document.querySelector('#errLocation');
-  let errProdType = document.querySelector('#errProdType');
-  let errProdName = document.querySelector('#errProdName');
-  let errAgtName = document.querySelector('#errAgtName');
-  let errTelNo = document.querySelector('#errTelNo');
+  const errByrName = document.querySelector("#errByrName");
+  const errNin = document.querySelector("#errNin");
+  const errLocation = document.querySelector("#errLocation");
+  const errProdType = document.querySelector("#errProdType");
+  const errProdName = document.querySelector("#errProdName");
+  const errAgtName = document.querySelector("#errAgtName");
+  const errTelNo = document.querySelector("#errTelNo");
 
   // Regexp
-  let num = /^[0-9]+$/;
-  let alpnum = /^[a-zA-Z0-9-.,\s]+$/;
-  let ninExp = /^[A-Z0-9]+$/;
+  const num = /^[0-9]+$/;
+  const alpnum = /^[a-zA-Z0-9-.,\s]+$/;
+  const ninExp = /^[A-Z0-9]+$/;
 
-  const errStyle = 'font-size:13px; color:red;';
-  const bdrStyle = '2px solid red';
+  const errStyle = "font-size:13px; color:red;";
+  const bdrStyle = "2px solid red";
 
   // Buyer's Name
   if (!byrName.value.match(alpnum) && !(byrName.value.length > 2)) {
@@ -31,7 +31,7 @@ let credVal = () => {
     byrName.style.border = bdrStyle;
     errByrName.style = errStyle;
     errByrName.innerHTML =
-      'Name must be made of more than 2 alphanumeric characters.';
+      "Name must be made of more than 2 alphanumeric characters.";
   }
 
   // NIN Validation
@@ -39,7 +39,7 @@ let credVal = () => {
     nin.focus();
     nin.style.border = bdrStyle;
     errNin.style = errStyle;
-    errNin.innerHTML = 'NIN is of 14 characters (numbers and capital letters).';
+    errNin.innerHTML = "NIN is of 14 characters (numbers and capital letters).";
   }
 
   // Location Validation
@@ -48,7 +48,7 @@ let credVal = () => {
     location.style.border = bdrStyle;
     errLocation.style = errStyle;
     errLocation.innerHTML =
-      'Location must be made of more than 2 alphanumeric characters.';
+      "Location must be made of more than 2 alphanumeric characters.";
   }
 
   // Validating Contact field.
@@ -56,23 +56,23 @@ let credVal = () => {
     tel.style.border = bdrStyle;
     tel.focus();
     errTelNo.style = errStyle;
-    errTelNo.innerHTML = 'Format: 0701234567';
+    errTelNo.innerHTML = "Format: 0701234567";
   }
 
   // Produce Type Validation
-  if (type.value == '') {
+  if (type.value == "") {
     type.focus();
     type.style.border = bdrStyle;
     errProdType.style = errStyle;
-    errProdType.innerHTML = 'You must choose an option.';
+    errProdType.innerHTML = "You must choose an option.";
   }
 
   // Produce Name Validation
-  if (pdtName.value == '') {
+  if (pdtName.value == "") {
     pdtName.focus();
     pdtName.style.border = bdrStyle;
     errProdName.style = errStyle;
-    errProdName.innerHTML = 'You must choose an option.';
+    errProdName.innerHTML = "You must choose an option.";
   }
 
   // Sales Agent's Name Validation

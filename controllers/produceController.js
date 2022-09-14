@@ -1,4 +1,5 @@
 const Produce = require("../models/Produce");
+const logger = require("./logger");
 
 exports.getAllProduce = async (req, res) => {
   try {

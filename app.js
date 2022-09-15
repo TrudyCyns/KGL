@@ -6,7 +6,7 @@ const flash = require("connect-flash");
 
 require("dotenv").config();
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3015;
 
 // Express Session
 const expressSession = require("express-session")({
@@ -84,5 +84,4 @@ app.get("*", (req, res) => {
 });
 
 // Setting Server Port
-
 app.listen(PORT, () => console.log(`Listening on Port ${PORT}`));

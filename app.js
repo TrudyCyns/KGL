@@ -1,10 +1,8 @@
-/* eslint-disable import/order */
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const flash = require('connect-flash');
-require('dotenv').config();
 
 require('dotenv').config();
 
@@ -86,5 +84,4 @@ app.get('*', (req, res) => {
 });
 
 // Setting Server Port
-
 app.listen(PORT, () => console.log(`Listening on Port ${PORT}`));

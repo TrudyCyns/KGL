@@ -6,13 +6,13 @@ const passport = require('passport');
 const flash = require('connect-flash');
 require('dotenv').config();
 
-require("dotenv").config();
+require('dotenv').config();
 
 const PORT = process.env.PORT || 3015;
 
 // Express Session
-const expressSession = require("express-session")({
-  secret: "secret",
+const expressSession = require('express-session')({
+  secret: 'secret',
   resave: false,
   saveUninitialized: false,
 });
@@ -20,7 +20,7 @@ const expressSession = require("express-session")({
 const { ensureAuthenticated } = require('./config/auth');
 
 // Database
-const config = require("./config/database");
+const config = require('./config/database');
 
 // Models
 // const User = require("./models/User");
@@ -34,7 +34,7 @@ const agentRoutes = require('./routes/agentroutes');
 const app = express();
 
 // Passport Configuration
-require("./config/passport")(passport);
+require('./config/passport')(passport);
 
 // Connect mongoose
 mongoose.connect(config.database, { useNewUrlParser: true });
@@ -49,12 +49,12 @@ db.on('error', (err) => {
 });
 
 // View Engine Configuration
-app.set("view engine", "pug");
-app.set("views", "./views");
+app.set('view engine', 'pug');
+app.set('views', './views');
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(expressSession);
 // Initialising Passport
 app.use(passport.initialize());
@@ -63,25 +63,25 @@ app.use(flash());
 
 // Global Vars
 app.use((req, res, next) => {
-  res.locals.success_msg = req.flash("success_msg");
-  res.locals.error_msg = req.flash("error_msg");
-  res.locals.error = req.flash("error");
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
 
   next();
 });
 
 // Routes
-app.use("/", homeRoutes);
-app.use("/manager", ensureAuthenticated, managerRoutes);
-app.use("/director", ensureAuthenticated, directorRoutes);
-app.use("/agent", ensureAuthenticated, agentRoutes);
+app.use('/', homeRoutes);
+app.use('/manager', ensureAuthenticated, managerRoutes);
+app.use('/director', ensureAuthenticated, directorRoutes);
+app.use('/agent', ensureAuthenticated, agentRoutes);
 
 // handling non existing routes
-app.get("*", (req, res) => {
-  res.status(404).render("error", {
-    title: "Error",
-    status: "Fail",
-    error: "Wrong Address Entered.",
+app.get('*', (req, res) => {
+  res.status(404).render('error', {
+    title: 'Error',
+    status: 'Fail',
+    error: 'Wrong Address Entered.',
   });
 });
 

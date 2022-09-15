@@ -7,7 +7,7 @@
     "test": "mocha || true",
     "dev": "nodemon app.js",
     "start": "node app.js"
-    },
+  },
   "repository": {
     "type": "",
     "url": ""
@@ -15,9 +15,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/TrudyCyns/KGL-Node/issues"
-  },
+  "bugs": {},
   "homepage": "https://github.com/TrudyCyns/KGL-Node#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -28,10 +26,10 @@
     "mongoose": "^6.6.0",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
-    "pug": "^3.0.2"
+    "pug": "^3.0.2",
+    "winston": "^3.8.2"
   },
   "devDependencies": {
-    "nodemon": "^2.0.19",
     "chai": "^4.3.6",
     "eslint": "^8.23.0",
     "eslint-config-airbnb": "^19.0.4",
@@ -41,6 +39,8 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.2.1",
     "mocha": "^10.0.0",
+    "nodemon": "^2.0.19",
+    "nyc": "^15.1.0",
     "prettier": "^2.7.1"
   }
 }

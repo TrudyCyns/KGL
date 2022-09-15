@@ -7,7 +7,7 @@
     "test": "mocha || true",
     "dev": "nodemon app.js",
     "start": "node app.js"
-    },
+  },
   "repository": {
     "type": "",
     "url": ""
@@ -15,9 +15,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    
-  },
+  "bugs": {},
   "homepage": "https://github.com/TrudyCyns/KGL-Node#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -42,6 +40,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "mocha": "^10.0.0",
     "nodemon": "^2.0.19",
+    "nyc": "^15.1.0",
     "prettier": "^2.7.1"
   }
 }

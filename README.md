@@ -19,6 +19,8 @@ This is a readme file for the KGL project.
 
 ### The project
 
+This project was undertaken as part of the Refactory Catalyst Program CAT011
+
 Karibu groceries LTD is a wholesale produce distributor dealing in cereals with 2 Branches in
 different locations. Over time all operations have been recorded in ruled black books. This has
 prompted the owner to seek for a software solution.
@@ -59,7 +61,7 @@ The tests carried out by Mocha and logging done by Winston are under development
 
 ## Collaborators
 
-- Jonah Okot Oloya
+- Jonah Okot
   - GitHub - [jonahokot](https://github.com/jonahokot)
 - Gertrude Nabasirye
   - GitHub - [TrudyCyns](https://github.com/TrudyCyns)

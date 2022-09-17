@@ -1,7 +1,7 @@
 {
   "name": "kgl",
   "version": "1.0.0",
-  "description": "",
+  "description": "[![Coverage Status](https://coveralls.io/repos/github/TrudyCyns/KGL/badge.svg?branch=master)](https://coveralls.io/github/TrudyCyns/KGL?branch=master)",
   "main": "app.js",
   "scripts": {
     "test": "mocha || true",
@@ -15,7 +15,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {},
   "homepage": "https://github.com/TrudyCyns/KGL-Node#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -42,5 +41,8 @@
     "nodemon": "^2.0.19",
     "nyc": "^15.1.0",
     "prettier": "^2.7.1"
+  },
+  "directories": {
+    "test": "test"
   }
 }

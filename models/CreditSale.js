@@ -1,34 +1,34 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const creditSalesSchema = new mongoose.Schema({
   byrname: {
     type: String,
-    required: [true, "A buyer name is required."],
+    required: [true, 'A buyer name is required.'],
   },
   nin: {
     type: String,
     trim: true,
-    required: [true, "A NIN is required"],
+    required: [true, 'A NIN is required'],
   },
   location: {
     type: String,
     trim: true,
-    required: [true, "A location is required."],
+    required: [true, 'A location is required.'],
   },
   telno: {
     type: String,
     trim: true,
-    required: [true, "A Buyer Contact is required"],
+    required: [true, 'A Buyer Contact is required'],
   },
   amtdue: {
     type: Number,
     trim: true,
-    required: "An amount due is required.",
+    required: 'An amount due is required.',
   },
   tonnage: {
     type: Number,
     trim: true,
-    required: [true, "A sale must have a tonnage"],
+    required: [true, 'A sale must have a tonnage'],
   },
   disdate: {
     type: Date,
@@ -43,11 +43,11 @@ const creditSalesSchema = new mongoose.Schema({
   prodname: {
     type: String,
     trim: true,
-    required: [true, "The sale must have a product name"],
+    required: [true, 'The sale must have a product name'],
   },
   agtname: {
     type: String,
-    required: [true, "A agent name is required."],
+    required: [true, 'A agent name is required.'],
   },
   brname: {
     type: String,
@@ -55,4 +55,4 @@ const creditSalesSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("CreditSales", creditSalesSchema);
+module.exports = mongoose.model('CreditSales', creditSalesSchema);

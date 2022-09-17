@@ -28,6 +28,7 @@ const homeRoutes = require('./routes/homeroutes');
 const managerRoutes = require('./routes/managerroutes');
 const directorRoutes = require('./routes/directorroutes');
 const agentRoutes = require('./routes/agentroutes');
+const logger = require('./config/logger');
 
 const app = express();
 
@@ -39,7 +40,7 @@ mongoose.connect(config.database, { useNewUrlParser: true });
 const db = mongoose.connection;
 // Check connection
 db.once('open', () => {
-  console.log('Connected to MongoDB');
+  logger.log(process.env.INFO, 'Connected to MongoDB');
 });
 // Check for db errors
 db.on('error', (err) => {
@@ -84,4 +85,6 @@ app.get('*', (req, res) => {
 });
 
 // Setting Server Port
-app.listen(PORT, () => console.log(`Listening on Port ${PORT}`));
+app.listen(PORT, () =>
+  logger.log(process.env.INFO, `Listening on Port ${PORT}`)
+);

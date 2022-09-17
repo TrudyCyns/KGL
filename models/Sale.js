@@ -1,28 +1,28 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const salesSchema = new mongoose.Schema({
   prodname: {
     type: String,
     trim: true,
-    required: [true, "The sale must have a product name"],
+    required: [true, 'The sale must have a product name'],
   },
   tonnage: {
     type: Number,
     trim: true,
-    required: [true, "A sale must have a tonnage"],
+    required: [true, 'A sale must have a tonnage'],
   },
   amtpaid: {
     type: Number,
     trim: true,
-    required: "The amount paid is required.",
+    required: 'The amount paid is required.',
   },
   byrname: {
     type: String,
-    required: [true, "A buyer name is required."],
+    required: [true, 'A buyer name is required.'],
   },
   agtname: {
     type: String,
-    required: [true, "A agent name is required."],
+    required: [true, 'A agent name is required.'],
   },
   brname: {
     type: String,
@@ -33,4 +33,4 @@ const salesSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Sale", salesSchema);
+module.exports = mongoose.model('Sale', salesSchema);

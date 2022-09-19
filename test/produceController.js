@@ -4,7 +4,7 @@ const produceController = require('../controllers/produceController');
 
 describe('Produce Controller', () => {
   it('should get all produce', () => {
-    assert.isEmpty(produceController.getAllProduce());
+    assert.isNotEmpty(produceController.getAllProduce());
   });
   it('should create produce', () => {
     assert.isEmpty(produceController.createProduce());

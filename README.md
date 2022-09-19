@@ -4,6 +4,8 @@
 ![Shields.io](https://img.shields.io/badge/Version-2.0-information)
 ![CircleCI](https://img.shields.io/circleci/build/github/TrudyCyns/KGL/master?token=b65f205e07d44949b87f22cf2fabb43111b5aad9)
 
+![CircleCI](https://img.shields.io/circleci/build/github/TrudyCyns/KGL/master?token=047a9f7b54ef756c7dbe47dbed27d9d9ff1b26d7)
+
 This is a readme file for the KGL project.
 
 ## Table of contents

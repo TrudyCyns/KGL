@@ -4,15 +4,15 @@ const produceController = require('../controllers/produceController');
 
 describe('Produce Controller', () => {
   it('should get all produce', () => {
-    assert.isNotEmpty(produceController.getAllProduce());
+    assert.isEmpty(produceController.getAllProduce());
   });
   it('should create produce', () => {
-    assert.isNotEmpty(produceController.createProduce());
+    assert.isEmpty(produceController.createProduce());
   });
   it('should update produce', () => {
-    assert.isNotEmpty(produceController.updateProduce());
+    assert.isEmpty(produceController.updateProduce());
   });
   it('should delete produce', () => {
-    assert.isNotEmpty(produceController.deleteProduce());
+    assert.isEmpty(produceController.deleteProduce());
   });
 });

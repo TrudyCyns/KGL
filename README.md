@@ -1,6 +1,7 @@
 # Karibu Groceries Limited (KGL)
 
 [![Coverage Status](https://coveralls.io/repos/github/TrudyCyns/KGL/badge.svg?branch=master)](https://coveralls.io/github/TrudyCyns/KGL?branch=master)
+[![Shields.io](https://img.shields.io/badge/Version-2.0-information)
 
 This is a readme file for the KGL project.
 

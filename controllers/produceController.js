@@ -1,4 +1,5 @@
 const Produce = require('../models/Produce');
+const logger = require('./logger');
 
 exports.getAllProduce = async (req, res) => {
   try {
@@ -13,9 +14,11 @@ exports.getAllProduce = async (req, res) => {
       title: 'Produce',
       user: req.session.user,
     });
+    logger.produceLogger.log('info', 'Succesfully got procurement records');
   } catch (err) {
     req.flash('error_message', 'Failed to retrieve Procurement Records.');
     res.redirect('back');
+    logger.produceLogger.log('error', 'failed to retrieve procurement records');
   }
 };
 

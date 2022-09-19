@@ -1,33 +1,33 @@
-const express = require('express');
+const express = require("express");
 
-const credsalesController = require('../controllers/credsalesController');
-const salesController = require('../controllers/salesController');
+const credsalesController = require("../controllers/credsalesController");
+const salesController = require("../controllers/salesController");
 
-const Produce = require('../models/Produce');
+const Produce = require("../models/Produce");
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.render('agt', { title: 'Agent', user: req.session.user });
+router.get("/", (req, res) => {
+  res.render("agt", { title: "Agent", user: req.session.user });
 });
 
-router.get('/sales/new', async (req, res) => {
+router.get("/sales/new", async (req, res) => {
   const user = req.session.user;
-  const produce = await Produce.find().where('brname').equals(user.branch);
+  const produce = await Produce.find().where("brname").equals(user.branch);
 
-  res.render('createsale', {
-    title: 'Create Sale',
+  res.render("createsale", {
+    title: "Create Sale",
     user,
     produce,
   });
 });
 
-router.get('/creditsales/new', async (req, res) => {
+router.get("/creditsales/new", async (req, res) => {
   const user = req.session.user;
-  const produce = await Produce.find().where('brname').equals(user.branch);
+  const produce = await Produce.find().where("brname").equals(user.branch);
 
-  res.render('createcredsale', {
-    title: 'Create Credit Sale',
+  res.render("createcredsale", {
+    title: "Create Credit Sale",
     produce,
     user,
   });
@@ -36,14 +36,14 @@ router.get('/creditsales/new', async (req, res) => {
 // ROUTES
 // Sales Routes
 router
-  .route('/sales')
+  .route("/sales")
   .get(salesController.getAllSales)
   .post(salesController.createSale);
 // Credit Sales Routes
 router
-  .route('/creditsales')
+  .route("/creditsales")
   .get(credsalesController.getAllCreditSale)
   .post(credsalesController.createCreditSale);
-router.route('/creditsales/:id').get(credsalesController.getCreditSale);
+router.route("/creditsales/:id").get(credsalesController.getCreditSale);
 
 module.exports = router;

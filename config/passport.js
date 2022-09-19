@@ -1,19 +1,19 @@
-const LocalStrategy = require("passport-local").Strategy;
+const LocalStrategy = require('passport-local').Strategy;
 // const mongoose = require('mongoose');
-const bcrypt = require("bcryptjs");
+const bcrypt = require('bcryptjs');
 
-const User = require("../models/User");
+const User = require('../models/User');
 
 module.exports = function (passport) {
   passport.use(
-    new LocalStrategy({ usernameField: "email" }, (email, password, done) => {
+    new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
       // Find user
       User.findOne({ email })
-        .select("+password")
+        .select('+password')
         .then((user) => {
           if (!user) {
             return done(null, false, {
-              message: "That email is not registered.",
+              message: 'That email is not registered.',
             });
           }
           //   Match Password
@@ -22,7 +22,7 @@ module.exports = function (passport) {
             if (isMatch) {
               return done(null, user);
             }
-            return done(null, false, { message: "Incorrect Password." });
+            return done(null, false, { message: 'Incorrect Password.' });
           });
         })
         .catch((err) => console.log(err));

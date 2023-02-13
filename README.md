@@ -65,7 +65,7 @@ The tests carried out by Mocha and logging done by Winston are under development
 
 ## Collaborators
 
-- Jonah Okot
-  - GitHub - [jonahokot](https://github.com/jonahokot)
 - Gertrude Nabasirye
   - GitHub - [TrudyCyns](https://github.com/TrudyCyns)
+- Jonah Okot
+  - GitHub - [jonahokot](https://github.com/jonahokot)
